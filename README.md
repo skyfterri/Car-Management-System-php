@@ -1,45 +1,40 @@
-# PHP Car Management System 🚗  
+# PHP Car Management System 🚗
 
-A **PHP-based Car Management System** with **user authentication** and **CRUD operations** for managing cars. Built with **PHP, MySQL, and Bootstrap**, this project is designed to run on **XAMPP**.  
-
----
-
-## 📌 Features  
-✅ User Registration & Login  
-✅ Secure Password Hashing  
-✅ CRUD Operations for Cars (Create, Read, Update, Delete)  
-✅ Bootstrap for Styling  
-✅ MySQL Database Integration  
+A **PHP-based Car Management System** with **user authentication** and **CRUD operations**. Built with **PHP, MySQL, and Bootstrap**, designed to run on **XAMPP**.
 
 ---
 
-## 🛠️ Installation & Setup  
+## Features  
+- User Registration & Login  
+- Secure Password Hashing  
+- CRUD Operations for Cars  
+- Bootstrap for Styling  
+- MySQL Database Integration
 
-### 1️⃣ Install XAMPP  
-Download and install XAMPP if you haven’t already.  
+---
 
-### 2️⃣ Create the Project Folder  
-- Navigate to the `htdocs` directory inside XAMPP:  
-  - **Windows:** `C:\xampp\htdocs\`  
-  - **Mac/Linux:** `/Applications/XAMPP/htdocs/`  
-- Create a new folder for the project, e.g., `car-management-system`.  
+## Installation & Setup  
 
-### 3️⃣ Place the Files  
-- Download or clone this repository.  
-- Copy all **PHP files, HTML files, and assets** into the `car-management-system` folder.  
-- Also, place the provided **SQL file** inside this folder.  
+1. **Install XAMPP**  
+   Download and install XAMPP.
 
-### 4️⃣ Set Up the Database  
-1. Open [phpMyAdmin](http://localhost/phpmyadmin/) in your browser.  
-2. Create a **new database**, e.g., `car_management_db`.  
-3. Import the provided **SQL file** into this database:  
-   - Go to the **"Import"** tab in phpMyAdmin.  
-   - Choose the SQL file and click **"Go"**.  
+2. **Create Project Folder**  
+   Go to `htdocs` in XAMPP:  
+   - **Windows:** `C:\xampp\htdocs\`  
+   - **Mac/Linux:** `/Applications/XAMPP/htdocs/`  
+   Create a folder (e.g., `car-management-system`).
 
-### 5️⃣ Start XAMPP Services  
-- Open **XAMPP Control Panel**.  
-- Click **"Start"** for **Apache** and **MySQL**.  
+3. **Place the Files**  
+   Download this repository and place all **PHP files, HTML files**, and the **SQL file** in the folder.
 
-### 6️⃣ Access the Project  
-Open your browser and visit:  
-📍 [http://localhost/car-management-system/](http://localhost/car-management-system/)  
+4. **Set Up the Database**  
+   - Open [phpMyAdmin](http://localhost/phpmyadmin/).  
+   - Create a new database (e.g., `car_management_db`).  
+   - Import the provided **SQL file**.
+
+5. **Start XAMPP Services**  
+   Start **Apache** and **MySQL** in the XAMPP Control Panel.
+
+6. **Access the Project**  
+   Visit:  
+   [http://localhost/car-management-system/](http://localhost/car-management-system/)
