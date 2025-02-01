@@ -60,7 +60,7 @@ A **PHP-based Car Management System** with **user authentication** and **CRUD op
 - **Update Car Page**  
   If users want to update car details, they can click the "Update" button next to the car and edit its information on the update page.
 
-![Update Car Page](https://github.com/user-attachments/assets/27373b57-08d1-4d8b-9ac7-4ed4dfe01ef5)
+![Update Car Page](https://github.com/user-attachments/assets/7d72a11c-4268-4c45-9462-3831cdaec990)
 
 ## License
 
