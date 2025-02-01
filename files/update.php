@@ -156,7 +156,7 @@ if (isset($_POST['submit'])) {
 
         <div class="mb-3">
             <label class="form-label">Color</label>
-            <input type="color" name="color" style="margin-left:10px; height: 30px; width:540px;">
+            <input type="color" name="color" style="margin-left:10px; height: 30px; width:540px;" value="<?php echo $color; ?>">
         </div>
 
         <button type="submit" name="submit" class="btn btn-primary">Update</button>
