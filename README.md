@@ -35,25 +35,32 @@ A **PHP-based Car Management System** with **user authentication** and **CRUD op
 - **Access Your Project**
   - In your browser, visit `http://localhost/my-php-project/`.
 
-You will be shown the login page.
+## How the Application Will Look Like
 
-![image](https://github.com/user-attachments/assets/be1d13af-f249-4a6f-b5f5-c0a74998e146)
+- **Login Page**  
+  You will be shown the login page.
 
-If users don’t have an account, they can sign up by clicking the "Sign Up" button, which will take them to the sign-up page.
+![Login Page](https://github.com/user-attachments/assets/be1d13af-f249-4a6f-b5f5-c0a74998e146)
 
-![image](https://github.com/user-attachments/assets/018b9101-fec0-45e2-83dd-f324b1263ec3)
+- **Sign Up Page**  
+  If users don’t have an account, they can sign up by clicking the "Sign Up" button, which will take them to the sign-up page.
 
-After logging in, users are redirected to the main dashboard, where they can view the list of cars and manage their data.
+![Sign Up Page](https://github.com/user-attachments/assets/018b9101-fec0-45e2-83dd-f324b1263ec3)
 
-![image](https://github.com/user-attachments/assets/306975c6-70e2-4380-924d-b3142bddeee2)
+- **Main Dashboard**  
+  After logging in, users are redirected to the main dashboard, where they can view the list of cars and manage their data.
 
-After pressing the "Add Car" button, you will be directed to the add car page, which allows users to add new cars to the system.
+![Main Dashboard](https://github.com/user-attachments/assets/306975c6-70e2-4380-924d-b3142bddeee2)
 
-![image](https://github.com/user-attachments/assets/45a913b7-e11b-4dfc-8d18-99eb52035d2d)
+- **Add Car Page**  
+  After pressing the "Add Car" button, you will be directed to the add car page, which allows users to add new cars to the system.
 
-If users want to update car details, they can click the "Update" button next to the car and edit its information on the update page.
+![Add Car Page](https://github.com/user-attachments/assets/45a913b7-e11b-4dfc-8d18-99eb52035d2d)
 
-![image](https://github.com/user-attachments/assets/27373b57-08d1-4d8b-9ac7-4ed4dfe01ef5)
+- **Update Car Page**  
+  If users want to update car details, they can click the "Update" button next to the car and edit its information on the update page.
+
+![Update Car Page](https://github.com/user-attachments/assets/27373b57-08d1-4d8b-9ac7-4ed4dfe01ef5)
 
 ## License
 
