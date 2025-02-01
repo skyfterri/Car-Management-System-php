@@ -6,7 +6,7 @@ A **PHP-based Car Management System** with **user authentication** and **CRUD op
 
 ## Features  
 - User Registration & Login  
-- Secure Password Hashing  
+- Secure Password Hashing and Salting 
 - CRUD Operations for Cars  
 - Bootstrap for Styling  
 - MySQL Database Integration
