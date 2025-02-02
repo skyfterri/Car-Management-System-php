@@ -171,13 +171,6 @@ $result = mysqli_query($conn, $sql);
 
 <div class="container">
     <h1>Cars</h1>
-    <a href="Add.php" class="text-light">
-        <button>Add Car</button>
-    </a>
-    <a href="session_destroy.php" class="text-light">
-        <button class="btn-custom" name="log_out">Log Out</button>
-    </a>
-
     <!-- Filter Form -->
     <form method="GET" action="show.php" class="mb-4">
         <div class="row">
@@ -233,6 +226,13 @@ $result = mysqli_query($conn, $sql);
         <button type="submit" class="btn btn-primary mt-2">Apply Filters</button>
         <a href="show.php" class="btn btn-secondary mt-2">Reset Filters</a>
     </form>
+
+    <a href="Add.php" class="text-light">
+        <button>Add Car</button>
+    </a>
+    <a href="session_destroy.php" class="text-light">
+        <button class="btn-custom" name="log_out">Log Out</button>
+    </a>
 
     <table class="table">
         <thead>
