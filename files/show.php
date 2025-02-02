@@ -4,6 +4,99 @@ session_start();
 
 include("connection.php");
 
+// Define the number of results per page
+$results_per_page = 5; 
+
+// Initialize filter variables
+$make_filter = isset($_GET['make_filter']) ? $_GET['make_filter'] : '';
+$model_filter = isset($_GET['model_filter']) ? $_GET['model_filter'] : '';
+$body_type_filter = isset($_GET['body_type_filter']) ? $_GET['body_type_filter'] : '';
+$fuel_type_filter = isset($_GET['fuel_type_filter']) ? $_GET['fuel_type_filter'] : '';
+
+// Fetch unique values for dropdown filters
+$make_options = [];
+$model_options = [];
+$body_type_options = [];
+$fuel_type_options = [];
+
+// Fetch unique Makes
+$sql = "SELECT DISTINCT make_ FROM cars";
+$result = mysqli_query($conn, $sql);
+while ($row = mysqli_fetch_assoc($result)) {
+    $make_options[] = $row['make_'];
+}
+
+// Fetch unique Models
+$sql = "SELECT DISTINCT model_ FROM cars";
+$result = mysqli_query($conn, $sql);
+while ($row = mysqli_fetch_assoc($result)) {
+    $model_options[] = $row['model_'];
+}
+
+// Fetch unique Body Types
+$sql = "SELECT DISTINCT body_type FROM cars";
+$result = mysqli_query($conn, $sql);
+while ($row = mysqli_fetch_assoc($result)) {
+    $body_type_options[] = $row['body_type'];
+}
+
+// Fetch unique Fuel Types
+$sql = "SELECT DISTINCT fuel_type FROM cars";
+$result = mysqli_query($conn, $sql);
+while ($row = mysqli_fetch_assoc($result)) {
+    $fuel_type_options[] = $row['fuel_type'];
+}
+
+// Build the base SQL query for counting total records
+$sql = "SELECT COUNT(id) AS total FROM cars WHERE 1=1";
+if (!empty($make_filter)) {
+    $sql .= " AND make_ = '$make_filter'";
+}
+if (!empty($model_filter)) {
+    $sql .= " AND model_ = '$model_filter'";
+}
+if (!empty($body_type_filter)) {
+    $sql .= " AND body_type = '$body_type_filter'";
+}
+if (!empty($fuel_type_filter)) {
+    $sql .= " AND fuel_type = '$fuel_type_filter'";
+}
+
+$result = mysqli_query($conn, $sql);
+$row = mysqli_fetch_assoc($result);
+$total_results = $row['total'];
+
+// Calculate the number of pages needed
+$total_pages = ceil($total_results / $results_per_page);
+
+// Determine the current page
+if (isset($_GET['page']) && is_numeric($_GET['page'])) {
+    $current_page = $_GET['page'];
+} else {
+    $current_page = 1; // default to first page
+}
+
+// Calculate the starting record for the current page
+$start_from = ($current_page - 1) * $results_per_page;
+
+// Fetch the records for the current page with filters
+$sql = "SELECT * FROM cars WHERE 1=1";
+if (!empty($make_filter)) {
+    $sql .= " AND make_ = '$make_filter'";
+}
+if (!empty($model_filter)) {
+    $sql .= " AND model_ = '$model_filter'";
+}
+if (!empty($body_type_filter)) {
+    $sql .= " AND body_type = '$body_type_filter'";
+}
+if (!empty($fuel_type_filter)) {
+    $sql .= " AND fuel_type = '$fuel_type_filter'";
+}
+$sql .= " LIMIT $start_from, $results_per_page";
+
+$result = mysqli_query($conn, $sql);
+
 ?>
 
 <!DOCTYPE html>
@@ -72,7 +165,6 @@ include("connection.php");
         a:hover {
             color: #ddd;
         }
-
     </style>
 </head>
 <body>
@@ -85,6 +177,62 @@ include("connection.php");
     <a href="session_destroy.php" class="text-light">
         <button class="btn-custom" name="log_out">Log Out</button>
     </a>
+
+    <!-- Filter Form -->
+    <form method="GET" action="show.php" class="mb-4">
+        <div class="row">
+            <div class="col-md-3">
+                <label for="make_filter">Make</label>
+                <select class="form-control" id="make_filter" name="make_filter">
+                    <option value="">All Makes</option>
+                    <?php
+                    foreach ($make_options as $make) {
+                        $selected = ($make == $make_filter) ? 'selected' : '';
+                        echo "<option value='$make' $selected>$make</option>";
+                    }
+                    ?>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label for="model_filter">Model</label>
+                <select class="form-control" id="model_filter" name="model_filter">
+                    <option value="">All Models</option>
+                    <?php
+                    foreach ($model_options as $model) {
+                        $selected = ($model == $model_filter) ? 'selected' : '';
+                        echo "<option value='$model' $selected>$model</option>";
+                    }
+                    ?>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label for="body_type_filter">Body Type</label>
+                <select class="form-control" id="body_type_filter" name="body_type_filter">
+                    <option value="">All Body Types</option>
+                    <?php
+                    foreach ($body_type_options as $body_type) {
+                        $selected = ($body_type == $body_type_filter) ? 'selected' : '';
+                        echo "<option value='$body_type' $selected>$body_type</option>";
+                    }
+                    ?>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label for="fuel_type_filter">Fuel Type</label>
+                <select class="form-control" id="fuel_type_filter" name="fuel_type_filter">
+                    <option value="">All Fuel Types</option>
+                    <?php
+                    foreach ($fuel_type_options as $fuel_type) {
+                        $selected = ($fuel_type == $fuel_type_filter) ? 'selected' : '';
+                        echo "<option value='$fuel_type' $selected>$fuel_type</option>";
+                    }
+                    ?>
+                </select>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary mt-2">Apply Filters</button>
+        <a href="show.php" class="btn btn-secondary mt-2">Reset Filters</a>
+    </form>
 
     <table class="table">
         <thead>
@@ -100,9 +248,6 @@ include("connection.php");
         </thead>
         <tbody>
         <?php
-
-        $sql = "SELECT * FROM cars";
-        $result = mysqli_query($conn, $sql);
 
         if ($result) {
             while ($row = mysqli_fetch_assoc($result)) {
@@ -127,7 +272,6 @@ include("connection.php");
                     </td>
                 </tr>';
             }
-
         }
         ?>
 
@@ -135,15 +279,39 @@ include("connection.php");
 
     </table>
 
+    <!-- Pagination -->
+    <nav>
+        <ul class="pagination justify-content-center">
+            <?php
+            // Display previous page button
+            if ($current_page > 1) {
+                echo '<li class="page-item"><a class="page-link" href="show.php?page=' . ($current_page - 1) . '&make_filter=' . $make_filter . '&model_filter=' . $model_filter . '&body_type_filter=' . $body_type_filter . '&fuel_type_filter=' . $fuel_type_filter . '">Previous</a></li>';
+            }
+
+            // Display page numbers
+            for ($page = 1; $page <= $total_pages; $page++) {
+                if ($page == $current_page) {
+                    echo '<li class="page-item active"><a class="page-link" href="show.php?page=' . $page . '&make_filter=' . $make_filter . '&model_filter=' . $model_filter . '&body_type_filter=' . $body_type_filter . '&fuel_type_filter=' . $fuel_type_filter . '">' . $page . '</a></li>';
+                } else {
+                    echo '<li class="page-item"><a class="page-link" href="show.php?page=' . $page . '&make_filter=' . $make_filter . '&model_filter=' . $model_filter . '&body_type_filter=' . $body_type_filter . '&fuel_type_filter=' . $fuel_type_filter . '">' . $page . '</a></li>';
+                }
+            }
+
+            // Display next page button
+            if ($current_page < $total_pages) {
+                echo '<li class="page-item"><a class="page-link" href="show.php?page=' . ($current_page + 1) . '&make_filter=' . $make_filter . '&model_filter=' . $model_filter . '&body_type_filter=' . $body_type_filter . '&fuel_type_filter=' . $fuel_type_filter . '">Next</a></li>';
+            }
+            ?>
+        </ul>
+    </nav>
 </div>
+
 </body>
 </html>
 
 <?php
 
 if (isset($_POST["log_out"])) {
-
     session_destroy();
-
 }
 ?>
