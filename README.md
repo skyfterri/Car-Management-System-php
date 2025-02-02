@@ -7,7 +7,9 @@ A **PHP-based Car Management System** with **user authentication** and **CRUD op
 ## Features  
 - User Registration & Login  
 - Secure Password Hashing and Salting 
-- CRUD Operations for Cars  
+- CRUD Operations for Cars
+- Pagination for Car Listings
+- Filtering by Make, Model, Body Type, and Fuel Type
 - Bootstrap for Styling  
 - MySQL Database Integration
 
@@ -35,6 +37,9 @@ A **PHP-based Car Management System** with **user authentication** and **CRUD op
 - **Access Your Project**
   - In your browser, visit `http://localhost/my-php-project/`.
 
+---
+
+
 ## How the Application Will Look Like
 
 - **Login Page**  
@@ -50,7 +55,7 @@ A **PHP-based Car Management System** with **user authentication** and **CRUD op
 - **Main Dashboard**  
   After logging in, users are redirected to the main dashboard, where they can view the list of cars and manage their data.
 
-![Main Dashboard](https://github.com/user-attachments/assets/306975c6-70e2-4380-924d-b3142bddeee2)
+![Main Dashboard](https://github.com/user-attachments/assets/1137a0f6-8894-43be-a19d-1a155fd37a23)
 
 - **Add Car Page**  
   After pressing the "Add Car" button, you will be directed to the add car page, which allows users to add new cars to the system.
